@@ -75,6 +75,40 @@ Para o processo de desenvolvimento do sistema, foram empregadas diversas ferrame
 
 [ARM Assembly by Example](https://armasm.com): Site contendo diversos exemplos de uso de ARM V7, também contem extensa fundamentação teórica.
 
+## Conjunto de instruções usadas:
+
+|      Instrução     	|                                                                             Descrição                                                                             	|
+|:------------------:	|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:	|
+|        `MOV`       	|                              Move o valor do operando para o registrador destino. Podendo ser um valor imediato ou de um registrador.                             	|
+|        `ADD`       	|                                             Soma o valor dos operandos e armazena o resultado  no registrador destino.                                            	|
+|        `SUB`       	|                                 Subtrai do primeiro operando o valor do operando 2 e  armazena o resultado no registrador destino.                                	|
+|        `AND`       	|                                    Faz uma operação and bit a bit nos operandos e  armazena o resultado no registrador destino.                                   	|
+|        `ORR`       	|                                    Faz uma operação or bit a bit nos operandos e  armazena o resultado no registrador destino.                                    	|
+|        `CMP`       	|                                                Compara o valor no registrador do primeiro operando  com Operando2.                                                	|
+|        `LDR`       	|                                                            Carrega dados da memória em um registrador.                                                            	|
+|        `STR`       	|                                                           Armazena o dado de um registrador na memória.                                                           	|
+|        `SVC`       	|                                    Faz uma interrupção de software. Foi utilizado  para fazer chamadas ao sistema operacional.                                    	|
+|        `STRB`         |                       Calcula endereço de um registrador base e de um registrador de offset, carrega um byte do registrador e armazena em memória |
+|        `LDRB`         |                       Calcula endereço de um registrador base e de um registrador de offset, carrega um byte da memória e escreve no registrador |
+|        `LSL`       	| Faz um deslocamento lógico à esquerda. O LSL fornece o valor de um registrador multiplicado por uma potência de dois,  inserindo zeros nas posições de bit vagas. 	|
+|        `BIC`       	|       A instrução BIC (BIT Clear) realiza uma operação  AND nos bits em Rn(Operando 1) com os complementos dos bits correspondentes no valor de Operando 2.       	|
+|         `B`        	|                                                      A instrução B causa um desvio para uma parte do código.                                                      	|
+|        `BL`        	|                             A instrução BL copia o endereço da próxima instrução em r14 (LR) e faz o desvio para uma parte do código.                             	|
+|        `BX`        	|                                                   A instrução BX causa um desvio para o endereço mantido em Rm.                                                   	|
+|     `.include`     	|                                                                Inclui arquivos externos ao código.                                                                	|
+|       `.equ`       	|                                                                     Define um valor constante.                                                                    	|
+| `.macro` e `.endm` 	|                                     Cria uma rotina com um trecho de código que pode ser chamada em qualquer parte do programa                                    	|
+|        `LSR`       	|    Faz um deslocamento lógico à direita. O LSL fornece o valor de um registrador dividido por uma potência de dois,  inserindo zeros nas posições de bit vagas.   	|
+|       `.data`      	|                                                              Define uma seção de dados para o código.                                                             	|
+|       `.word`      	|                                                              Define uma palavra de dados de 4 bytes.                                                              	|
+|      `.asciz`      	|                                                              Define uma string seguida por 1 byte 0.                                                              	|
+|      `.ltorg`      	|                                                              Usado em rotinas muito grandes para fazer com que o offset de instruções como LDR fique dentro do seu intervalo (+/- 4095).|
+
+Em algumas das instruções acima(ADD,B,BL,SUB e MOV) foram utilizadas condições de execução. Segue abaixo a lista das que foram usadas:
+- `EQ` - Compara se é igual.
+- `LT` - Compara se é menor que.
+
+
 ## Execução do projeto:
 
 A estrutura do projeto está dividida em:
