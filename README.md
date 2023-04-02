@@ -4,7 +4,7 @@
 
 ## Primeiro problema proposto na disciplina TEC499 - MI SISTEMAS DIGITAIS
 
-Professor: Thiago de Jesus Almeida
+Professor: Thiago Cerqueira de Jesus
 
 Dupla: Carlos Valadão e Fernando Mota
 
