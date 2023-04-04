@@ -1,3 +1,5 @@
+.equ VALUE, 23159 @ Valor a ser contado
+
 .include "gpio.s"
 .include "sleep.s"
 .include "lcd.s"
@@ -17,62 +19,85 @@
 .endm
 
 _start:
-  MemoryMap
+    MemoryMap
 	GPIOPinIn b1
 	GPIOPinIn b2
 	setLCDPinsOut
 	init
-	@clearDisplay
-	@escreve
 
-INIT:
-	clearDisplay
-	MOV R9, #9
-	WriteLCD R9
+	@ Valor de contagem
+	DEFINE:
+		MOV R6, #VALUE
+	INIT:
+		MOV R9, R6 
+		MOV R10, #6
+	B BEFORE
+
+	@ Aguarda o usuario pressionar o botao de PLAY
+	WAIT:
+		GPIOPinState b2
+		CMP R1, #0
+		BEQ PLAY
 	B WAIT
 
-WAIT:
-	GPIOPinState b2
-	CMP R1, #0
-	BEQ PLAY
-B WAIT
-PLAY:
-	SUB R9, #1
-	nanoSleep time1s, timeZero @ contando
+	@Exibe o numero no display LCD
+	BEFORE:
+		clearDisplay
+	SHOWNUMBER:
+		CMP      R10, #-1        @ verifica se o loop atingiu valor maximo (num maximo de caracteres)
+		BEQ      INTERM           @ caso positivo sai do loop | aqui poderia vir para uma branch que decrementa e chama ele
+									@ de novo
+		potencia #10, R10       @ realiza 10^(contador do loop)
 
-	returnHome
-	WriteLCD R9 @ escreve o valor decrementado no LCD
-
-	GPIOPinState b2
-	CMP R1, #0      @ verifica se o botao de pause foi pressionado
-	BEQ PAUSE
+		divisao  R9, R1         @ faz a divisao do valor que queremos por r6 (potencia acima)
 	
-	GPIOPinState b1
-	CMP R1, #0     @ verifica se o botao de reset foi pressionado
-	BEQ INIT
+		WriteLCD R12		    @ Escreve no LCD o valor armazenado em r12 (quociente)
+		SUB 	 R10, #1
+		MOV		 R9, R11		@ novo valor de r9 sera o resto (valor armazenado em r11)
+		B 		 SHOWNUMBER	@ volta ao começo do loop
 
-	CMP R9, #0 @ contagem finalizada
-	BEQ INIT
-B PLAY
+	INTERM:
+		CMP R6, #VALUE
+		BEQ WAIT @ se for a primeira iteracao
+		BLT PLAY @ se nao for a primeira iteracao
 
-PAUSE:
-nanoSleep timeZero, time170ms
-DO:
-	GPIOPinState b2
-	CMP R1, #0      @ verifica se o play foi pressionado
-	BEQ DO 
-DOSOME:	
-	GPIOPinState b2
-	CMP R1, #0
-	BEQ PLAY
+	PLAY:
+		@SUB R6, #1
+		nanoSleep time1s, timeZero @ contando
+		@CMP R6, #0      @ verifica se o numero contado e zero
+		SUBS R1, #1
+		BEQ EXIT
 
-	GPIOPinState b1
-	CMP R1, #0      @ verifica se o reset foi pressionado
-	BEQ INIT
-B DOSOME
+		MOV R10, #6 @ Configura a "proxima chamada" a SHOWNUMBER
+		MOV R9, R6
 
-EXIT:
-	_end
+		GPIOPinState b2
+		CMP R1, #0      @ verifica se o botao de pause foi pressionado
+		BEQ PAUSE
+		
+		GPIOPinState b1
+		CMP R1, #0     @ verifica se o botao de reset foi pressionado
+		BEQ DEFINE
+	B BEFORE
+
+	PAUSE:
+	@nanoSleep timeZero, time170ms
+	DO:
+		GPIOPinState b2
+		CMP R1, #0      @ verifica se o play foi pressionado
+		BEQ DO 
+	DOSOME:	
+		GPIOPinState b2 @ Verifica se o play foi pressionado
+		CMP R1, #0
+		BEQ BEFORE
+
+		GPIOPinState b1
+		CMP R1, #0      @ verifica se o reset foi pressionado
+		BEQ DEFINE
+	B DOSOME
+
+	EXIT:
+		_end
 
 .data
     fileName: .asciz "/dev/mem" @ caminho do arquivo que representa a memoria RAM
@@ -84,6 +109,8 @@ EXIT:
 	time1ms: .word 1000000 @ 1ms
 
 	time850ms: .word 850000000 @850ms
+
+    time950ms: .word 950000000 @850ms
 
 	time170ms: .word 170000000 @ 170ms
 
@@ -186,4 +213,3 @@ EXIT:
 		.word 0x10
 		.word 0x14
 		.word 0x10
-
