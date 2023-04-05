@@ -167,11 +167,11 @@ Por fim, em *main.s* estão contidas as definições e labels que são indispens
 <a id="testes_realizados"></a>
 ## Testes Realizados
 
-[Contagem regular sem interrupção](src/play.mp4)
+[Contagem regular sem interrupção](https://raw.githubusercontent.com/AssemblyTimer/TimerAssembly/main/src/play.mp4?token=GHSAT0AAAAAAB6OZKJVFFJDNKTTKYUHTQH4ZBMZ2PA)
 
-[Contagem com uma pausa](src/play_and_pause.mp4)
+[Contagem com uma pausa](https://raw.githubusercontent.com/AssemblyTimer/TimerAssembly/main/src/play_and_pause.mp4?token=GHSAT0AAAAAAB6OZKJUZS7BTHGYVEBX36JYZBMZ26Q)
 
-[Contagem com pausa e reset](src/pause_reset.mp4)
+[Contagem com pausa e reset](https://raw.githubusercontent.com/AssemblyTimer/TimerAssembly/main/src/pause_reset.mp4?token=GHSAT0AAAAAAB6OZKJUBUVWNMWZSMX32JAUZBMZ3LQ)
 
 <a id="execucao_projeto"></a>
 ## Execução do projeto:
