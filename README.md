@@ -167,7 +167,7 @@ Por fim, em *main.s* estão contidas as definições e labels que são indispens
 <a id="testes_realizados"></a>
 ## Testes Realizados
 
-[Contagem regular sem interrupção (v](https://raw.githubusercontent.com/AssemblyTimer/TimerAssembly/main/src/play.mp4?token=GHSAT0AAAAAAB6OZKJUGILDPZCNWR2OXUKSZBNO7AQ)
+[Contagem regular sem interrupção (vídeo)](https://raw.githubusercontent.com/AssemblyTimer/TimerAssembly/main/src/play.mp4?token=GHSAT0AAAAAAB6OZKJUGILDPZCNWR2OXUKSZBNO7AQ)
 
 [Contagem com uma pausa (vídeo)](https://raw.githubusercontent.com/AssemblyTimer/TimerAssembly/main/src/pause_reset.mp4?token=GHSAT0AAAAAAB6OZKJU5ZMBQF4KKJQ3V77SZBNO7PA)
 
