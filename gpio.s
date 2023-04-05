@@ -9,7 +9,7 @@
 .macro MemoryMap
     @sys_open
     LDR R0, =fileName @ R0 = nome do arquivo
-    MOV R1, #2 @ move um hexadecimal para R1
+    MOV R1, #2 @ O_RDWR (permissao de leitura e escrita pra arquivo)
     MOV R7, #5 @ sys_open
     SVC 0
     MOV R4, R0 @ salva o descritor do arquivo.
@@ -18,7 +18,7 @@
     MOV R0, #0 @ NULL (SO escolhe o endereco)
     LDR R1, =pagelen
     LDR R1, [R1] @ tamanho da pagina de memoria
-    MOV R2, #3 @ protecao leitura ou escritaa
+    MOV R2, #3 @ protecao leitura ou escrita
     MOV R3, #1 @ memoria compartilhada
     LDR R5, =gpioaddr @ endereco GPIO / 4096
     LDR R5, [R5]
