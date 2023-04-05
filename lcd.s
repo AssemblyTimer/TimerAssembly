@@ -343,3 +343,23 @@
 
     enable
 .endm
+
+
+/*
+======================================================
+	Seta o cursor do display para uma posicao especifica
+    a partir do inicio.
+
+    ~pos~ tem de estar entre 1 e 32
+======================================================
+*/
+.macro setLCDCursor pos
+    MOV R0, \pos
+    returnHome
+    WHILE:
+        cursorShiftRight
+        nanoSleep timeZero, time150us
+        SUB R0, #1
+        CMP R0, #0
+        BGT WHILE
+.endm

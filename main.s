@@ -1,10 +1,10 @@
-.equ VALUE, 23159 @ Valor a ser contado
+.equ VALUE, 30 @ Valor a ser contado
+.equ QTD_DIGITO, 2
 
 .include "gpio.s"
 .include "sleep.s"
 .include "lcd.s"
 .include "divisao.s"
-.include "timer.s"
 
 .global _start
 /*
@@ -30,7 +30,7 @@ _start:
 		MOV R6, #VALUE
 	INIT:
 		MOV R9, R6 
-		MOV R10, #6
+		MOV R10, #QTD_DIGITO
 	B BEFORE
 
 	@ Aguarda o usuario pressionar o botao de PLAY
@@ -62,13 +62,12 @@ _start:
 		BLT PLAY @ se nao for a primeira iteracao
 
 	PLAY:
-		@SUB R6, #1
+		SUB R6, #1
 		nanoSleep time1s, timeZero @ contando
-		@CMP R6, #0      @ verifica se o numero contado e zero
-		SUBS R1, #1
-		BEQ EXIT
+		CMP R6, #-1      @ verifica se o numero contado e zero
+		BEQ DEFINE
 
-		MOV R10, #6 @ Configura a "proxima chamada" a SHOWNUMBER
+		MOV R10, #QTD_DIGITO @ Configura a "proxima chamada" a SHOWNUMBER
 		MOV R9, R6
 
 		GPIOPinState b2
@@ -81,7 +80,6 @@ _start:
 	B BEFORE
 
 	PAUSE:
-	@nanoSleep timeZero, time170ms
 	DO:
 		GPIOPinState b2
 		CMP R1, #0      @ verifica se o play foi pressionado
