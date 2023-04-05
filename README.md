@@ -167,6 +167,11 @@ Por fim, em *main.s* estão contidas as definições e labels que são indispens
 <a id="testes_realizados"></a>
 ## Testes Realizados
 
+[Contagem regular sem interrupção](src/play.mp4)
+
+[Contagem com uma pausa](src/play_and_pause.mp4)
+
+[Contagem com pausa e reset](src/pause_reset.mp4)
 
 <a id="execucao_projeto"></a>
 ## Execução do projeto:
