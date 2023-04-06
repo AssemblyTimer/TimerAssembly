@@ -167,13 +167,13 @@ Por fim, em *main.s* estão contidas as definições e labels que são indispens
 <a id="testes_realizados"></a>
 ## Testes Realizados
 
-##### Contando de 10 a 0 sem interrupção.
+### Contando de 10 a 0 sem interrupção.
 [Contagem regular sem interrupção](https://user-images.githubusercontent.com/42982873/230244995-e5048fb5-c644-42ea-bfd1-5c6e6c3f004b.mp4)
 
-##### Contando e pausando durante a contagem.
+### Contando e pausando durante a contagem.
 [Contagem com uma pausa](https://user-images.githubusercontent.com/42982873/230245088-67011b6b-9077-44cb-a3e0-9f626fdbb4e8.mp4)
 
-##### Pausa durante contagem e reset.
+### Pausa durante contagem e reset.
 [Contagem com pausa e reset](https://user-images.githubusercontent.com/42982873/230245153-c8243b96-e27f-4a04-8a60-e9d901332ec2.mp4)
 
 
