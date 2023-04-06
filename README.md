@@ -1,4 +1,4 @@
-<a id="top></a>
+<a id="top"></a>
 # TIMER ASSEMBLY
 
 * * *
@@ -193,4 +193,4 @@ make main
 make run
 ```
 
-#### [Voltar ao topo](#inicio)
+#### [Voltar ao topo](#top)
