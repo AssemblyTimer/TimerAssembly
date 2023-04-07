@@ -187,15 +187,18 @@ Em todos os testes o contador parte de seu estado inicial, isto é, após defini
 ### Contando de 10 a 0 sem interrupção.
 Neste teste a contagem acontece de 10 até 0, de tal forma que o valor a ser contado foi préviamente inserido
 no código (antes da compilação dele), sendo assim a contagem, o valor é mostrado no display LCD e decrementado em um, a cada um segundo, e este ciclo se repete até chegar ao número zero, quando o contador reinicia para o estado inicial.
+
 [Contagem regular sem interrupção](https://user-images.githubusercontent.com/42982873/230244995-e5048fb5-c644-42ea-bfd1-5c6e6c3f004b.mp4)
 
 ### Contando e pausando durante a contagem.
 Partindo do estado inicial, a contagem é pausada, é esperado que o número em que a contagem foi pausada permanece sendo
 exposto no LCD enquanto o timer estiver pausado, retomando a contagem normalmente após o despause.
+
 [Contagem com uma pausa](https://user-images.githubusercontent.com/42982873/230245088-67011b6b-9077-44cb-a3e0-9f626fdbb4e8.mp4)
 
 ### Pausa durante contagem e reset.
 Após realizada uma pausa, é realizado o reinício do contador, por meio da interação com o botão de *reset*, isto é, fazê-lo retornar para o seu estado de partida.
+
 [Contagem com pausa e reset](https://user-images.githubusercontent.com/42982873/230245153-c8243b96-e27f-4a04-8a60-e9d901332ec2.mp4)
 
 
